@@ -550,3 +550,9 @@ body[data-page="admissions"] .lively-card h3, body[data-page="contact"] .lively-
 body[data-page="admissions"] .lively-card p, body[data-page="contact"] .lively-card p{color:#546b83;}
 body[data-page="contact"] .mini-card.lively-card{padding:24px;}
 @media(max-width:640px){.lively-card{min-height:0;}}
+
+/* Homepage-only embroidered patch artwork: existing 3D rotation, thickness and orbital movement retained. */
+body[data-page="home"] .shield-plate-front,
+body[data-page="home"] .shield-plate-back {background:transparent;clip-path:none;}
+body[data-page="home"] .shield-plate .shield-inlay {inset:0;clip-path:none;background:transparent;box-shadow:none;}
+body[data-page="home"] .shield-plate .shield-inlay img[src*="embroidered-crest.svg"] {width:100%;height:100%;object-fit:contain;mix-blend-mode:normal;filter:drop-shadow(0 2px 3px rgba(3,10,22,.28));}
