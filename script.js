@@ -15,7 +15,7 @@ $$('.reveal').forEach(el=>observer?observer.observe(el):el.classList.add('visibl
 $$('.page-hero,.hero').forEach(hero=>{hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect(); hero.style.setProperty('--mx', ((e.clientX-r.left)/r.width*100)+'%'); hero.style.setProperty('--my', ((e.clientY-r.top)/r.height*100)+'%');});});
 const active=document.body.dataset.page; if(active){ $$('[data-nav]').forEach(el=>{if(el.dataset.nav===active) el.classList.add('is-active');}); }
 
-const STORAGE='garlandale_photo_restored_20261118_v15';
+const STORAGE='garlandale_photo_restored_20261118_v16';
 const OLD_STORAGE='garlandale_demo_content_v1';
 const defaults={
   announcements:[
@@ -32,11 +32,11 @@ const defaults={
     {title:'Family Information Pack', type:'DOC', note:'An example of a downloadable resource for parents.', link:'#'}
   ],
   gallery:[
-    {title:'Garlandale learners · June 2024', caption:'A genuine Garlandale Primary School photograph shared on the school’s Facebook page on 3 June 2024.', image:'garlandale-photo-wide.jpg', credit:'Garlandale Primary School · School Facebook reference · Permission pending.', source:'https://www.facebook.com/photo.php?fbid=778946174304823', sourceLabel:'View original Facebook photograph'},
-    {title:'Digital learning improvements · 2026', caption:'The school’s learning technology facilities. Garlandale was reported to have received interactive smartboards and 20 donated computers.', image:'garlandale-digital-learning.jpg', credit:'Digital learning facility photograph supplied for the concept. Publication permission pending.', source:'https://athlonenews.co.za/news/2026-10-28-garlandale-primary-school-unveils-renovated-library/', sourceLabel:'Read technology improvements report'},
+    {title:'Garlandale learners · June 2024', caption:'A genuine Garlandale Primary School photograph shared on the school’s Facebook page on 3 June 2024.', image:'/garlandale-primary-redesign/garlandale-photo-wide.jpg?v=20261118-photos-restored-4', credit:'Garlandale Primary School · School Facebook reference · Permission pending.', source:'https://www.facebook.com/photo.php?fbid=778946174304823', sourceLabel:'View original Facebook photograph'},
+    {title:'Digital learning improvements · 2026', caption:'The school’s learning technology facilities. Garlandale was reported to have received interactive smartboards and 20 donated computers.', image:'/garlandale-primary-redesign/garlandale-digital-learning.jpg?v=20261118-photos-restored-4', credit:'Digital learning facility photograph supplied for the concept. Publication permission pending.', source:'https://athlonenews.co.za/news/2026-10-28-garlandale-primary-school-unveils-renovated-library/', sourceLabel:'Read technology improvements report'},
     {title:'Garlandale school banner', caption:'The existing school’s own public WordPress banner, shown when the source image server permits loading.', image:'https://garlandaleprimary.wordpress.com/wp-content/uploads/2016/02/garlandale_primary_banner-1.jpg?w=700', credit:'Garlandale Primary School · Published WordPress banner.', source:'https://garlandaleprimary.wordpress.com/', sourceLabel:'Visit school website'},
     {title:'Renovated school library · October 2026', caption:'Read the news story to view its original library and computer facility photographs.', story:true, motif:'library', credit:'Athlone News · October 2026 · Original pictures in article.', source:'https://athlonenews.co.za/news/2026-10-28-garlandale-primary-school-unveils-renovated-library/', sourceLabel:'Read library renovation story'},
-    {title:'Wisdom Builds · School crest', caption:'The school crest and motto supplied for this independent concept website.', image:'garlandale-school-crest.png', credit:'Garlandale Primary School · Crest supplied for concept.'}
+    {title:'Wisdom Builds · School crest', caption:'The school crest and motto supplied for this independent concept website.', image:'/garlandale-primary-redesign/garlandale-school-crest.png?v=20261118-photos-restored-4', credit:'Garlandale Primary School · Crest supplied for concept.'}
   ]};
 const clone=o=>JSON.parse(JSON.stringify(o));
 function getData(){
