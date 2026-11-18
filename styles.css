@@ -559,3 +559,25 @@ body[data-page="home"] .shield-plate .shield-inlay img[src*="embroidered-crest.s
 
 /* Exact supplied Wisdom Builds badge image: homepage front/back only */
 body[data-page="home"] .shield-plate .shield-inlay img[src*="garlandale-wisdom-embroidered-home.png"]{width:100%;height:100%;object-fit:fill;mix-blend-mode:normal;filter:drop-shadow(0 3px 5px rgba(3,10,22,.28));}
+
+/* Garlandale embroidered patch: thin fabric profile and exact art silhouette */
+body[data-page="home"] .floating-shield .shield-volume{display:none!important;}
+body[data-page="home"] .floating-shield{isolation:isolate;}
+body[data-page="home"] .floating-shield::before{
+ content:"";position:absolute;inset:0;
+ background:linear-gradient(105deg,#101e31 0%,#142740 40%,#233958 70%,#101c30 100%);
+ clip-path:polygon(50% 0,78% 7%,96% 12%,94% 65%,86% 80%,69% 93%,50% 100%,31% 93%,14% 80%,6% 65%,4% 12%,22% 7%);
+ transform:translateZ(0px);box-shadow:none;
+}
+body[data-page="home"] .floating-shield .shield-plate{
+ clip-path:none!important;background:transparent!important;box-shadow:none!important;
+}
+body[data-page="home"] .floating-shield .shield-plate-front{transform:translateZ(4px)!important;}
+body[data-page="home"] .floating-shield .shield-plate-back{transform:rotateY(180deg) translateZ(4px)!important;}
+body[data-page="home"] .floating-shield .shield-inlay{
+ inset:0!important;clip-path:none!important;background:transparent!important;box-shadow:none!important;
+}
+body[data-page="home"] .floating-shield .shield-inlay img{
+ width:100%!important;height:100%!important;object-fit:contain!important;
+ mix-blend-mode:normal!important;filter:drop-shadow(0 1px 2px rgba(1,10,22,.35))!important;
+}
