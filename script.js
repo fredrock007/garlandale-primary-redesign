@@ -15,7 +15,7 @@ $$('.reveal').forEach(el=>observer?observer.observe(el):el.classList.add('visibl
 $$('.page-hero,.hero').forEach(hero=>{hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect(); hero.style.setProperty('--mx', ((e.clientX-r.left)/r.width*100)+'%'); hero.style.setProperty('--my', ((e.clientY-r.top)/r.height*100)+'%');});});
 const active=document.body.dataset.page; if(active){ $$('[data-nav]').forEach(el=>{if(el.dataset.nav===active) el.classList.add('is-active');}); }
 
-const STORAGE='garlandale_demo_restored_20261118_v10';
+const STORAGE='garlandale_public_demo_20261118_v1';
 const OLD_STORAGE='garlandale_demo_content_v1';
 const defaults={
   announcements:[
@@ -32,12 +32,12 @@ const defaults={
     {title:'Family Information Pack', type:'DOC', note:'An example of a downloadable resource for parents.', link:'#'}
   ],
   gallery:[
-    {title:'Garlandale learners · June 2024', caption:'An actual Garlandale Primary School photograph, shared on the school’s Facebook page on 3 June 2024.', image:'garlandale-photo-wide.jpg', credit:'Garlandale Primary School · Public Facebook photo · Reuse requires permission.', source:'https://www.facebook.com/photo.php?fbid=778946174304823', sourceLabel:'View original Facebook photo'},
-    {title:'Garlandale school banner', caption:'The banner from Garlandale Primary School’s published WordPress website; it loads when internet access and image-hosting permissions allow.', image:'https://garlandaleprimary.wordpress.com/wp-content/uploads/2016/02/garlandale_primary_banner-1.jpg?w=700', credit:'Garlandale Primary School · Current WordPress site · Online reference.', source:'https://garlandaleprimary.wordpress.com/', sourceLabel:'Visit original school website'},
-    {title:'New library · October 2026', caption:'The school’s renovated library was featured in Athlone News. The source article contains photographs of the renovated library and computer laboratory. Open the story to see them.', image:'', story:true, motif:'library', credit:'Athlone News · 28 October 2026 · Genuine school photos available in the linked article.', source:'https://athlonenews.co.za/news/2026-10-28-garlandale-primary-school-unveils-renovated-library/', sourceLabel:'Read library renovation article'},
-    {title:'Digital learning improvements · 2026', caption:'A welcoming computer and digital learning space. Athlone News reports that Garlandale received smartboards and 20 donated computers for its IT laboratory.', image:'garlandale-digital-learning.jpg', credit:'Facility photograph supplied for this concept preview; publication permission and attribution to be confirmed.', source:'https://athlonenews.co.za/news/2026-10-28-garlandale-primary-school-unveils-renovated-library/', sourceLabel:'Read technology improvements report'},
-    {title:'Wisdom Builds · School crest', caption:'The school’s distinctive crest and motto, displayed as part of this independent redesign concept.', image:'garlandale-school-crest.png', credit:'Garlandale Primary School · Crest supplied for concept preview.'}
-  ]};
+    {title:'School community · Concept illustration', caption:'A proposed visual placeholder for school life. Authentic Garlandale photographs can be added after school approval.', image:'school-community-concept.svg', credit:'Original concept illustration · Not a Garlandale photograph.'},
+    {title:'Reading and learning', caption:'An original illustration celebrating reading and the school’s reported renovated library.', image:'library-concept.svg', credit:'Original concept illustration · Garlandale article linked for evidence.', source:'https://athlonenews.co.za/news/2026-10-28-garlandale-primary-school-unveils-renovated-library/', sourceLabel:'Read library renovation article'},
+    {title:'Digital learning improvements · 2026', caption:'An original illustration representing digital learning. The linked article reports smartboards and donated computers at Garlandale.', image:'digital-learning-concept.svg', credit:'Original concept illustration · Not a photograph of Garlandale.', source:'https://athlonenews.co.za/news/2026-10-28-garlandale-primary-school-unveils-renovated-library/', sourceLabel:'Read technology improvements report'},
+    {title:'Wisdom Builds · School crest', caption:'The school’s distinctive crest and motto, used for identification in this independent concept.', image:'garlandale-school-crest.png', credit:'Garlandale Primary School crest · Independent concept only.'}
+  ]
+};
 const clone=o=>JSON.parse(JSON.stringify(o));
 function getData(){
  try{
@@ -62,7 +62,7 @@ function renderDocuments(){
 function renderGallery(){ const host=$('#gallery-list'); if(!host)return; const data=getData().gallery;
  host.innerHTML=data.map(item=>{const story=!!item.story;
  const frame=story?`<a class="gallery-story-art story-${esc(item.motif||'library')}" href="${esc(item.source||'#')}" target="_blank" rel="noopener noreferrer" aria-label="${esc(item.sourceLabel||'Read published source')}"><span class="story-glyph" aria-hidden="true">${item.motif==='excursion'?'⌁':item.motif==='community'?'✦':'▤'}</span><span class="story-art-caption">${esc(item.sourceLabel||'Read published story')} ↗</span></a>`
- :`<div class="gallery-frame"><img src="${esc(item.image||'garlandale-school-crest.png')}" alt="${esc(item.title)}" loading="lazy" onerror="this.onerror=null;this.src='garlandale-school-crest.png'"></div>`;
+ :`<div class="gallery-frame"><img src="${esc(item.image||'school-community-concept.svg')}" alt="${esc(item.title)}" loading="lazy" onerror="this.onerror=null;this.src='school-community-concept.svg'"></div>`;
  return `<article class="gallery-card">${frame}<div class="gallery-copy"><h3>${esc(item.title)}</h3><p>${esc(item.caption||'')}</p><small class="image-credit">${esc(item.credit||'')}</small>${item.source?`<a class="gallery-source" href="${esc(item.source)}" target="_blank" rel="noopener noreferrer">${esc(item.sourceLabel||'View source')} ↗</a>`:''}</div></article>`;}).join('');}
 
 function renderStats(){ const data=getData(); $('#stat-ann')?.replaceChildren(); const pairs=[['Announcements',data.announcements.length],['Events',data.events.length],['Documents',data.documents.length],['Gallery Items',data.gallery.length]]; const host=$('#stat-grid'); if(host) host.innerHTML=pairs.map(([label,num])=>`<article class="stat-card"><span class="chip">${label}</span><b>${num}</b></article>`).join(''); }
