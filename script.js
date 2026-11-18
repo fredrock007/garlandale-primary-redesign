@@ -15,7 +15,7 @@ $$('.reveal').forEach(el=>observer?observer.observe(el):el.classList.add('visibl
 $$('.page-hero,.hero').forEach(hero=>{hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect(); hero.style.setProperty('--mx', ((e.clientX-r.left)/r.width*100)+'%'); hero.style.setProperty('--my', ((e.clientY-r.top)/r.height*100)+'%');});});
 const active=document.body.dataset.page; if(active){ $$('[data-nav]').forEach(el=>{if(el.dataset.nav===active) el.classList.add('is-active');}); }
 
-const STORAGE='garlandale_public_demo_20261118_v1';
+const STORAGE='garlandale_photo_restored_20261118_v15';
 const OLD_STORAGE='garlandale_demo_content_v1';
 const defaults={
   announcements:[
@@ -32,12 +32,12 @@ const defaults={
     {title:'Family Information Pack', type:'DOC', note:'An example of a downloadable resource for parents.', link:'#'}
   ],
   gallery:[
-    {title:'School community · Concept illustration', caption:'A proposed visual placeholder for school life. Authentic Garlandale photographs can be added after school approval.', image:'school-community-concept.svg', credit:'Original concept illustration · Not a Garlandale photograph.'},
-    {title:'Reading and learning', caption:'An original illustration celebrating reading and the school’s reported renovated library.', image:'library-concept.svg', credit:'Original concept illustration · Garlandale article linked for evidence.', source:'https://athlonenews.co.za/news/2026-10-28-garlandale-primary-school-unveils-renovated-library/', sourceLabel:'Read library renovation article'},
-    {title:'Digital learning improvements · 2026', caption:'An original illustration representing digital learning. The linked article reports smartboards and donated computers at Garlandale.', image:'digital-learning-concept.svg', credit:'Original concept illustration · Not a photograph of Garlandale.', source:'https://athlonenews.co.za/news/2026-10-28-garlandale-primary-school-unveils-renovated-library/', sourceLabel:'Read technology improvements report'},
-    {title:'Wisdom Builds · School crest', caption:'The school’s distinctive crest and motto, used for identification in this independent concept.', image:'garlandale-school-crest.png', credit:'Garlandale Primary School crest · Independent concept only.'}
-  ]
-};
+    {title:'Garlandale learners · June 2024', caption:'A genuine Garlandale Primary School photograph shared on the school’s Facebook page on 3 June 2024.', image:'garlandale-photo-wide.jpg', credit:'Garlandale Primary School · School Facebook reference · Permission pending.', source:'https://www.facebook.com/photo.php?fbid=778946174304823', sourceLabel:'View original Facebook photograph'},
+    {title:'Digital learning improvements · 2026', caption:'The school’s learning technology facilities. Garlandale was reported to have received interactive smartboards and 20 donated computers.', image:'garlandale-digital-learning.jpg', credit:'Digital learning facility photograph supplied for the concept. Publication permission pending.', source:'https://athlonenews.co.za/news/2026-10-28-garlandale-primary-school-unveils-renovated-library/', sourceLabel:'Read technology improvements report'},
+    {title:'Garlandale school banner', caption:'The existing school’s own public WordPress banner, shown when the source image server permits loading.', image:'https://garlandaleprimary.wordpress.com/wp-content/uploads/2016/02/garlandale_primary_banner-1.jpg?w=700', credit:'Garlandale Primary School · Published WordPress banner.', source:'https://garlandaleprimary.wordpress.com/', sourceLabel:'Visit school website'},
+    {title:'Renovated school library · October 2026', caption:'Read the news story to view its original library and computer facility photographs.', story:true, motif:'library', credit:'Athlone News · October 2026 · Original pictures in article.', source:'https://athlonenews.co.za/news/2026-10-28-garlandale-primary-school-unveils-renovated-library/', sourceLabel:'Read library renovation story'},
+    {title:'Wisdom Builds · School crest', caption:'The school crest and motto supplied for this independent concept website.', image:'garlandale-school-crest.png', credit:'Garlandale Primary School · Crest supplied for concept.'}
+  ]};
 const clone=o=>JSON.parse(JSON.stringify(o));
 function getData(){
  try{
@@ -62,7 +62,7 @@ function renderDocuments(){
 function renderGallery(){ const host=$('#gallery-list'); if(!host)return; const data=getData().gallery;
  host.innerHTML=data.map(item=>{const story=!!item.story;
  const frame=story?`<a class="gallery-story-art story-${esc(item.motif||'library')}" href="${esc(item.source||'#')}" target="_blank" rel="noopener noreferrer" aria-label="${esc(item.sourceLabel||'Read published source')}"><span class="story-glyph" aria-hidden="true">${item.motif==='excursion'?'⌁':item.motif==='community'?'✦':'▤'}</span><span class="story-art-caption">${esc(item.sourceLabel||'Read published story')} ↗</span></a>`
- :`<div class="gallery-frame"><img src="${esc(item.image||'school-community-concept.svg')}" alt="${esc(item.title)}" loading="lazy" onerror="this.onerror=null;this.src='school-community-concept.svg'"></div>`;
+ :`<div class="gallery-frame"><img src="${esc(item.image||'garlandale-school-crest.png')}" alt="${esc(item.title)}" loading="lazy" onerror="this.onerror=null;this.src='garlandale-school-crest.png'"></div>`;
  return `<article class="gallery-card">${frame}<div class="gallery-copy"><h3>${esc(item.title)}</h3><p>${esc(item.caption||'')}</p><small class="image-credit">${esc(item.credit||'')}</small>${item.source?`<a class="gallery-source" href="${esc(item.source)}" target="_blank" rel="noopener noreferrer">${esc(item.sourceLabel||'View source')} ↗</a>`:''}</div></article>`;}).join('');}
 
 function renderStats(){ const data=getData(); $('#stat-ann')?.replaceChildren(); const pairs=[['Announcements',data.announcements.length],['Events',data.events.length],['Documents',data.documents.length],['Gallery Items',data.gallery.length]]; const host=$('#stat-grid'); if(host) host.innerHTML=pairs.map(([label,num])=>`<article class="stat-card"><span class="chip">${label}</span><b>${num}</b></article>`).join(''); }
