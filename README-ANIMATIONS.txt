@@ -1,0 +1,1 @@
+Banner movement update: All seven supplied reference motifs are animated individually. Starts on page load; no delayed reveal. Only banner SVGs and appended CSS changed. Screenshots from the user are the design references. Open index.html and navigate between pages to inspect.
